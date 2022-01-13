@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Projects</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<header>
+{% include "chunks/navbar.html.twig" %}
+</header>
+
+<body>
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="container">
+    
+    <div class="row">
+    
+        <div class="one-half column" style="margin-top: 10%">
+        
+            <h4>Projects</h4>
+        </div>
+    </div>
+    <a class="button button-primary" href="/project/add">Add project</a>
+        <div class="row">
+          <div class="column">
+          </div>
+        </div>
+        <div class='array'>
+        <div class="row">
+            <div class="column">
+                <table class="u-full-width">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Date de Début</th>
+                            <th>Date de Fin</th>
+                            <th>Ajout Utlisateur</th>
+                            <th>Edit</th>
+                            <th>Add Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in projects %}
+                            <tr>
+                                <td>{{ project.getName }}</td>
+                                <td>{{ project.getDescription }}</td>
+                                <td>{{ project.getStartDate|date("d M Y") }}</td>
+                                <td>{{ project.getEndDate|date("d M Y") }}</td>
+                                <td><a class="button button-primary" href="/project/{{ project.getId }}/user">User</a></td>
+                                <td><a href="/project/edit/{{ project.getId }}" class="button button-primary">Edit</a></td>
+                                <td><a href="/project/{{ project.getId }}/tasks" class="button button-primary">View Task</a></td>
+                                
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+        </div>
+</div>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

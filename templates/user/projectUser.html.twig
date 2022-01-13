@@ -1,0 +1,71 @@
+
+  <meta charset="utf-8">
+  <title>User Projects</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+   <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<header>
+{% include "chunks/navbar.html.twig" %}
+</header>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 10%">
+        <h4>{{ user.getFirstName }} projects</h4>
+        <p></p>
+      </div>
+    </div>
+    <div class="array">
+    <!-- The above form looks like this -->
+    <table class="u-full-width">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Tasks</th>
+              <th>Project</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for project in projects %}
+          <tr>
+              <td>{{ project.getName }}</td>
+              <td>{{ project.getDescription }}</td>
+              <td><a class="button button-primary" href="/project/{{ project.getId }}/tasks">Tasks</a></td>
+              <td><a class="button button-primary" href="/project/edit/{{ project.getId }}">Project</a></td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  </div>
+      <a  href ='/user' class="button button-primary">Annuler</a>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
+
+  

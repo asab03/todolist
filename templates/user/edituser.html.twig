@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Edit User</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+   <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<header>
+{% include "chunks/navbar.html.twig" %}
+</header>
+<body>
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 10%">
+        <h4> Edit User</h4>
+      </div>
+    </div>
+    <div class="array">
+
+    <!-- The above form looks like this -->
+    <form action="/user/save2/{{userId}}" method="POST">
+      <div class="row">
+        <div class="six columns">
+          <label for="limit" >Prenom</label>
+          <input class="u-full-width input" type="text"  name="first_name" value="{{user.getFirstName}}">
+        </div>
+        <div class="six columns">
+          <label for="offset">Nom</label>
+          <input class="u-full-width input" type="text"  name="last_name" value="{{user.getLastName}}">
+        </div>
+        <div>
+          <label for="offset">Mail</label>
+          <input class="u-full-width input" type="text"  name="email" value="{{user.getEmail}}">
+        </div>
+      
+      </div>
+      <input class="button-primary" type="submit" value="Submit">
+      <a href="{{ path('user_delete', {"id":user.id})}}"  class="button button-primary">Delete</a>
+      </form>
+      </div>
+
+      <h5><a  href ='/user' class="button button-primary">Annuler</a></h5>
+
+
+
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

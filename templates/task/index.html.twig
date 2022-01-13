@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Tasks</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<header>
+{% include "chunks/navbar.html.twig" %}
+</header>
+<body>
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="container">
+    <div class="row">
+        <div class="one-half column" style="margin-top: 10%">
+        
+            <h4>Task {{project.getName}}</h4>
+        </div>
+    </div>
+    
+    <a class="button button-primary" href="/project/{{project.getId}}/tasks/add">Add Task</a>
+        <div class="row">
+          <div class="column">
+          </div>
+        </div>
+        <div class='array'>
+        <div class="row">
+            <div class="column">
+                <table class="u-full-width">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Date de Début</th>
+                            <th>Date de Fin</th>
+                            <th>Edit</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                            <tr>
+                                <td>{{ task.getName }}</td>
+                                <td>{{ task.getDescription }}</td>
+                                <td>{{ task.getStartDate|date("d M Y") }}</td>
+                                <td>{{ task.getEndDate|date("d M Y") }}</td>
+                                
+                                <td><a href="/project/{{project.getId}}/edittasks/{{task.getId}}" class="button button-primary">Edit</a></td>
+                                
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+</div>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

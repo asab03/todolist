@@ -1,0 +1,84 @@
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Users</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<header>
+{% include "chunks/navbar.html.twig" %}
+</header>
+<body>
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+  
+    <div class="row">
+    
+      <div class="one-half column" style="margin-top: 10%">
+      
+        <h4>Users</h4>
+      </div>
+    </div>
+
+    <!-- The above form looks like this -->
+    <h5><a  href ='user/add' class=" button button-primary">Ajouter</a></h5>
+    
+
+{% if users %}
+  <div class='array'>
+    <div class="row">
+      <div class="column">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>Mail</th>
+              <th>Modifier</th>
+              <th>Projets</th>
+            </tr>
+          </thead>
+          <tbody>
+{% for user in users %}
+            <tr>
+              <td>{{ user.getFirstName }}</td>
+              <td>{{ user.getLastName }}</td>
+              <td>{{ user.getEmail }}</td>
+              <td><a  href ='user/edit/{{user.getId}}' class=" button button-primary">Edit</a></td>
+              <td><a  href ='user/{{user.getId}}/projects' class=" button button-primary">Projets</a></td>
+            </tr>
+{% endfor %}
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+{% endif %}
+<a href="project" class="button button-primary">Liste des projets</a>
+
+</div>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+

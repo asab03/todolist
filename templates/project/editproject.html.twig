@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Edit Project</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<header>
+{% include "chunks/navbar.html.twig" %}
+</header>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 10%">
+        <h4>Edit project</h4>
+        <p></p>
+      </div>
+    </div>
+    <div class='array'>
+    <!-- The above form looks like this -->
+    <form action="/project/save/{{projectId}}" method="POST">
+      <div class="row">
+        <div class="column">
+          <label for="name">Name</label>
+          <input class="u-full-width input" type="text" id="name" name="name" value="{{project.getName}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="description">Description</label>
+          <input class="u-full-width input" type="text" id="description" name="description" value="{{project.getDescription}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="start_date">Start date</label>
+          <input class="u-full-width input" type="date" id="start_date" name="start_date" placeholder="jj/mm/aaaa" value="{{project.getStartDate|date("Y-m-d")}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="end_date">End date</label>
+          <input class="u-full-width input" type="date" id="end_date" name="end_date" placeholder="jj/mm/aaaa" value="{{project.getEndDate|date("Y-m-d")}}">
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="users">Users</label>
+          <select class="u-full-width input" id="users" name="users">
+            {% for user in users %}
+                  <option value="{{ user.getId }}" selected>{{ user.getFirstName }} {{ user.getLastName }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      
+      <input class="button-primary" type="submit" value="Save">
+      <a href="{{ path('project_delete', {"id":project.id})}}"  class="button btnDelete">Delete</a>
+      <a class="button btnCancel" href="/project">Cancel</a>
+    </form>
+    </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

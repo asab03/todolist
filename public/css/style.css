@@ -1,0 +1,29 @@
+body {
+  background-color: rgb(0, 0, 0);
+  color: aqua;
+}
+
+h4 {
+  color: rgb(255, 0, 212);
+  font-weight: 800;
+}
+.array {
+  background-color: rgb(49, 49, 49);
+  padding: 20px;
+  color: aqua;
+}
+.input {
+  color: palevioletred;
+  font-weight: bolder;
+}
+.btnDelete {
+  color: #fff;
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+.btnCancel {
+  color: #fff;
+  background-color: #ffa600;
+  border-color: #ffa600;
+}
